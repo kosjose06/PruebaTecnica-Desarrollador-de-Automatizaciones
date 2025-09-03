@@ -1,0 +1,16 @@
+
+version: '3.8'
+
+services:
+  etl-scraper:
+    build: .
+    container_name: etl-business-contacts
+    environment:
+      - WEB_URL=http://52.0.216.22:7080
+      - MONGODB_URI=mongodb://etl_user:etl_pass123@52.0.216.22:27017/etl_tracker
+      - API_BASE_URL=http://52.0.216.22:7300
+      - LOG_LEVEL=info
+      - RETRY_ATTEMPTS=3
+      - PROCESO_DESCRIPCION=Extracción contactos empresariales - Empresas Tech Q3 2024
+    restart: "no"
+    network_mode: "bridge"
